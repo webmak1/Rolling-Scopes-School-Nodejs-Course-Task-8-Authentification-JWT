@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as jwt from 'jsonwebtoken';
 import { IUserOutput } from 'resources/users/user.model';
-import { usersService } from 'resources/users/user.service';
+// import { usersService } from 'resources/users/user.service';
 
 export interface RequestWithUser extends Request {
   user?: IUserOutput;

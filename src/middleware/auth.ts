@@ -34,15 +34,22 @@ export const protect = async (
     }
 
     const decoded = jwt.verify(token, config.JWT_SECRET_KEY) as ITokenInterface;
-    const user = await usersService.get(decoded.id);
-
-    if (!user) {
+    
+    if (!decoded) {
       return res
         .status(StatusCodes.UNAUTHORIZED)
         .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
     }
+    
+    // const user = await usersService.get(decoded.id);
 
-    req.user = user;
+    // if (!user) {
+    //  return res
+    //    .status(StatusCodes.UNAUTHORIZED)
+    //    .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
+    // }
+
+    // req.user = user;
     next();
   } catch (err) {
     return res
